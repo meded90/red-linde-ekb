@@ -60,6 +60,7 @@
     <allow-intent href="data:*"/>
     <allow-intent href="geo:*"/>
     <allow-intent href="*"/>
+
     <log level="DEBUG"/>
     <platform name="android">
         <allow-intent href="market:*"/>

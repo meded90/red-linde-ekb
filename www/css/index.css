@@ -14,6 +14,7 @@
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
  * under the License. */
+@import url(http://db.onlinewebfonts.com/c/906bfc499768ba1fdbead60e4d1d7e41?family=HelveticaMonospacedW01);
 * {
   -webkit-tap-highlight-color: transparent; }
 
@@ -85,32 +86,39 @@ h1 {
   top: 20px;
   left: 20px;
   height: 70px;
-  max-width: 60%;
+  max-width: 90%;
   margin-left: -12px;
   margin-top: -12px; }
   .logo img {
-    max-height: 100%; }
+    max-height: 100%;
+    vertical-align: bottom; }
 
-/* Landscape layout (with min-width) */
 .contetn-baloon .ob-fotos,
 .contetn-baloon [title="Audio in English"],
 .contetn-baloon hr {
   display: none; }
 
+#plaer {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: bottom; }
+
 .audiojs {
   display: inline-block;
   position: relative;
-  padding-bottom: 4px; }
+  padding-bottom: 4px;
+  font-size: 15px;
+  color: #de352c; }
   .audiojs audio {
     position: absolute;
     left: -1px; }
   .audiojs .play-pause {
     padding: 4px 0;
     margin: 0px;
-    float: left;
+    display: inline-block;
     overflow: hidden;
-    width: 14px;
-    text-align: center; }
+    text-align: center;
+    font-size: 40px; }
   .audiojs p {
     display: none;
     margin: 0px;
@@ -120,21 +128,17 @@ h1 {
   .audiojs .scrubber {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: -10px;
     right: 0;
     height: 3px;
-    background-color: #dcdcdc;
-    transition: all 100ms; }
-    .audiojs .scrubber:hover {
-      height: 5px;
-      bottom: -1px; }
+    background-color: #dcdcdc; }
   .audiojs .progressAudeo {
     position: absolute;
     z-index: 1;
     bottom: 0;
     left: 0;
     top: 0;
-    background-color: #34495e; }
+    background-color: #de352c; }
   .audiojs .loaded {
     position: absolute;
     bottom: 0;
@@ -142,14 +146,14 @@ h1 {
     top: 0;
     background-color: #b4b4b4; }
   .audiojs .time {
-    font-family: monospace;
-    float: left;
+    display: inline-block;
+    font-family: "HelveticaMonospacedW01", monospace;
     line-height: 14px;
-    margin-left: 7px;
+    margin-left: 10px;
     padding: 4px 0 4px; }
     .audiojs .time em {
       padding: 0px 2px 0px 0px;
-      color: #454545;
+      color: rgba(222, 53, 44, 0.6);
       font-style: normal; }
     .audiojs .time strong {
       padding: 0px 0px 0px 2px;
@@ -208,5 +212,9 @@ h1 {
   cursor: pointer; }
   .balloon-audeo:hover {
     background-color: rgba(222, 53, 44, 0.1); }
+
+.spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear; }
 
 /*# sourceMappingURL=index.css.map */

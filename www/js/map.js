@@ -89,7 +89,7 @@ window.mapRedLine = function () {
      *  Logo
      */
     var LogoLayout = ymaps.templateLayoutFactory.createClass(
-      '<div class="logo"><img src="./img/logo-big.png" alt=""></div>'
+      '<div class="logo"><img src="./img/logo-big.png" alt=""><div id="plaer"></div></div>'
     );
     var logo = new ymaps.control.Button({
       options: {
@@ -98,6 +98,11 @@ window.mapRedLine = function () {
     });
     myMap.controls.add(logo, {float: 'left'});
 
+
+    /**
+     * Plaer
+     */
+    new RedLinePlaer()
 
     /**
      *  Linde
