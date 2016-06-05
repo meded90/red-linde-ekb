@@ -22,6 +22,7 @@ function init() {
 
         mapRedLine();
 
+
     } catch (e){
         alert(e);
     }
