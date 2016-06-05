@@ -27,7 +27,7 @@ function init() {
         alert(e);
     }
 }
-if (!cordova){
+if (!window.cordova){
     init()
 }
 var app = {

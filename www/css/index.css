@@ -80,18 +80,33 @@ h1 {
 [class*=map-copyrights-promo] {
   display: none; }
 
-.logo {
+.header {
   position: absolute;
   z-index: 3999;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
   height: 70px;
-  max-width: 90%;
   margin-left: -12px;
-  margin-top: -12px; }
-  .logo img {
-    max-height: 100%;
-    vertical-align: bottom; }
+  margin-top: -12px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px; }
+  @media screen and (max-width: 471px) {
+    .header {
+      right: 15px;
+      text-align: center; } }
+  .header .header-wrap {
+    display: inline-block;
+    width: 100%;
+    height: 100%; }
+    @media screen and (max-width: 471px) {
+      .header .header-wrap {
+        text-align: center; } }
+  .header .logo {
+    display: inline-block;
+    vertical-align: bottom;
+    height: 100%; }
+    .header .logo img {
+      max-height: 100%; }
 
 .contetn-baloon .ob-fotos,
 .contetn-baloon [title="Audio in English"],
@@ -102,6 +117,11 @@ h1 {
   display: inline-block;
   margin-left: 10px;
   vertical-align: bottom; }
+  @media screen and (max-width: 335px) {
+    #plaer {
+      position: absolute;
+      right: 20px;
+      top: 88px; } }
 
 .audiojs {
   display: inline-block;
@@ -113,9 +133,10 @@ h1 {
     position: absolute;
     left: -1px; }
   .audiojs .play-pause {
-    padding: 4px 0;
+    padding: 9px 0;
     margin: 0px;
     display: inline-block;
+    vertical-align: middle;
     overflow: hidden;
     text-align: center;
     font-size: 40px; }
@@ -128,10 +149,13 @@ h1 {
   .audiojs .scrubber {
     position: absolute;
     bottom: 0;
-    left: -10px;
     right: 0;
     height: 3px;
-    background-color: #dcdcdc; }
+    background-color: #dcdcdc;
+    left: -10px; }
+    @media screen and (max-width: 335px) {
+      .audiojs .scrubber {
+        left: 0px; } }
   .audiojs .progressAudeo {
     position: absolute;
     z-index: 1;
@@ -147,6 +171,7 @@ h1 {
     background-color: #b4b4b4; }
   .audiojs .time {
     display: inline-block;
+    vertical-align: middle;
     font-family: "HelveticaMonospacedW01", monospace;
     line-height: 14px;
     margin-left: 10px;
@@ -158,6 +183,9 @@ h1 {
     .audiojs .time strong {
       padding: 0px 0px 0px 2px;
       font-weight: normal; }
+    @media screen and (max-width: 471px) {
+      .audiojs .time {
+        display: none; } }
   .audiojs .error-message {
     float: left;
     display: none;
@@ -213,8 +241,17 @@ h1 {
   .balloon-audeo:hover {
     background-color: rgba(222, 53, 44, 0.1); }
 
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 .spin {
   -webkit-animation: fa-spin 2s infinite linear;
-  animation: fa-spin 2s infinite linear; }
+  animation: fa-spin 2s infinite linear;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block; }
 
 /*# sourceMappingURL=index.css.map */
