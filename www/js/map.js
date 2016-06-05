@@ -1,4 +1,5 @@
 window.mapRedLine = function () {
+  window.GLOBAL = {};
 
   // Дождёмся загрузки API и готовности DOM.
 
@@ -42,9 +43,9 @@ window.mapRedLine = function () {
       var w = window.innerWidth;
       var h = window.innerHeight;
       if (w > 600) {
-        myMap.geoObjects.options.set({balloonCloseButton: false})
-      } else {
         myMap.geoObjects.options.set({balloonCloseButton: true})
+      } else {
+        myMap.geoObjects.options.set({balloonCloseButton: false})
       }
       if (w > 600) {
         myMap.geoObjects.options.set({balloonPanelMaxMapArea: 0});
@@ -73,23 +74,10 @@ window.mapRedLine = function () {
 
 
     /**
-     * self geo
-     */
-    var geolocation = ymaps.geolocation;
-    geolocation.get({
-      provider: 'browser',
-      mapStateAutoApply: false
-    }).then(function (result) {
-      // Синим цветом пометим положение, полученное через браузер.
-      // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
-      myMap.geoObjects.add(result.geoObjects);
-    });
-
-    /**
      *  Logo
      */
     var LogoLayout = ymaps.templateLayoutFactory.createClass(
-      '<div class="logo"><img src="./img/logo-big.png" alt=""><div id="plaer"></div></div>'
+      '<div class="header">\n    <div class="header-wrap">\n        <div class="logo">\n            <img src="./img/logo-big.png" alt="">\n        </div><div id="plaer"></div>\n    </div>\n</div>'
     );
     var logo = new ymaps.control.Button({
       options: {
@@ -143,7 +131,7 @@ window.mapRedLine = function () {
       // gridSize: 80,
     });
     var bodyLayout = new ymaps.Template(
-      "<div class=\'balloon-body\'> \n    {% if properties.audioRu %} \n     <div class=\'balloon-audeo js-balloon-audeo\' data-audeo=\'{{  properties.audioRu }}\'>\n         <i class=\'icon-pacman\'></i>\n         Аудиогид\n     </div> \n    {% endif %}      \n    {% if properties.audioEng %} \n     <div class=\'balloon-audeo js-balloon-audeo\' data-audeo=\'{{  properties.audioEng }}\'>\n         <i class=\'icon-pacman\'></i>\n         Audiogid Englisch\n     </div> \n    {% endif %}\n    \n    {% if properties.content %} \n        {{ properties.content | raw  }}\n    {% else %}\n        <div style=\'text-align: center;\'> Загрузка...</div>\n    {% endif %}\n\n</div>"
+      "<div class=\'balloon-body\'> \n    {% if audioRu %} \n     <div class=\'btn balloon-audeo js-balloon-audeo\' data-audeo=\'{{  audioRu }}\'>\n         <i class=\'icon-pacman\'></i>\n         Аудиогид\n     </div> \n    {% endif %}      \n    {% if audioEng %} \n     <div class=\'btn balloon-audeo js-balloon-audeo\' data-audeo=\'{{  audioEng }}\'>\n         <i class=\'icon-pacman\'></i>\n         Audio guide English\n     </div> \n    {% endif %}\n    \n    {% if content %} \n        {{ content | raw  }}\n    {% else %}\n        <div style=\'text-align: center;\'> Загрузка...</div>\n    {% endif %}\n\n</div>"
     )
 
 
@@ -152,7 +140,7 @@ window.mapRedLine = function () {
       (function () {
 
         var obj = Window.ContentPoint[i];
-        obj.balloonContentBody = "<div style='text-align: center;height: 1000px'> Загрузка...</div>";
+        obj.balloonContentBody = "<div style=\'text-align: center;height: 350px;  font-size: 50px;  \'>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <i class=\'icon-spinner2 spin\'> </i>\n</div>";
 
         var placemark = new ymaps.Placemark([obj.point[0], obj.point[1]],
           obj, {
@@ -168,11 +156,12 @@ window.mapRedLine = function () {
         placemark.events.add('balloonopen', function (e) {
           var link = placemark.properties.get('link');
           parserRedLineSite(link).then(function (obj) {
-            var data = new ymaps.data.Manager({properties:obj});
-            var text = bodyLayout.build(data).text
+            obj.GLOBAL = window.GLOBAL;  //TODO: добавить прокладыване маршрута
+            var data = new ymaps.data.Manager(obj);
+            var text = bodyLayout.build(data).text;
             placemark.properties.set('balloonContentBody', text);
           })
-        })
+        });
 
         geoObjects[i] = placemark;
       })()
@@ -182,7 +171,9 @@ window.mapRedLine = function () {
     clusterer.add(geoObjects);
     myMap.geoObjects.add(clusterer);
 
-
+    /**
+     * pointer to center
+     */
     myMap.setBounds(myMap.geoObjects.getBounds(),
       {
         autoCenterin: true,
@@ -197,5 +188,27 @@ window.mapRedLine = function () {
 
 
   }
+
+  /**
+   * self geo
+   */
+  var id = setInterval(function () {
+    if (ymaps.geolocation) {
+      clearInterval(id);
+      ymaps.geolocation.get({
+        // Выставляем опцию для определения положения по ip
+        provider: 'browser',
+        // Карта автоматически отцентрируется по положению пользователя.
+        mapStateAutoApply: false
+      }).then(function (result) {
+        result.geoObjects.options.set('preset', 'islands#blueCircleDotIcon');
+        window.GLOBAL.mayGeo = result.geoObjects;
+        myMap.geoObjects.add(result.geoObjects);
+      });
+    }
+  }, 300)
+
+
+
 
 }
