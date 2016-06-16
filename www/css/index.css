@@ -49,6 +49,12 @@ h1 {
   color: #de352c;
   font-size: 30px; }
 
+a {
+  color: #007edf;
+  text-decoration: none; }
+  a.red {
+    color: #de352c; }
+
 .appLoad {
   background: url(../img/logo.png) no-repeat center top;
   /* 170px x 200px */
@@ -85,7 +91,6 @@ h1 {
   z-index: 3999;
   top: 15px;
   left: 15px;
-  height: 70px;
   margin-left: -12px;
   margin-top: -12px;
   background: rgba(255, 255, 255, 0.8);
@@ -94,10 +99,13 @@ h1 {
     .header {
       right: 15px;
       text-align: center; } }
+  .header .header-wrap1 {
+    height: 70px; }
   .header .header-wrap {
     display: inline-block;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    max-height: 70px; }
     @media screen and (max-width: 471px) {
       .header .header-wrap {
         text-align: center; } }
@@ -107,6 +115,34 @@ h1 {
     height: 100%; }
     .header .logo img {
       max-height: 100%; }
+
+.modal {
+  background-color: #fff;
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15), 0 5px 15px -7px rgba(0, 0, 0, 0.5);
+  padding: 10px; }
+  .modal .content_container {
+    height: 100%;
+    overflow: auto; }
+  .modal .grey {
+    color: #828282;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17); }
+  .modal .clous {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+PHBvbHlnb24gZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMTQsMC43IDEzLjMsMCA3LDYuMjk5IDAuNywwIDAsMC43IDYuMyw3IDAsMTMuMjk5IDAuNywxNCA3LDcuNyAxMy4zLDE0IDE0LDEzLjI5OSA3LjcsNyIvPjwvc3ZnPg==);
+    display: block;
+    width: 30px;
+    height: 40px;
+    margin-right: 4px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    top: 0;
+    right: 0; }
 
 .contetn-baloon .ob-fotos,
 .contetn-baloon [title="Audio in English"],
