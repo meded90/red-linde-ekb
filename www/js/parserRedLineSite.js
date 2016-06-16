@@ -1,5 +1,7 @@
 "use strict";
 
+var cash = window.cashRedLineSite || {};
+
 function httpGetAsync(theUrl, callback) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
@@ -12,13 +14,20 @@ function httpGetAsync(theUrl, callback) {
 
 function resolveUrl(url) {
   if (!/ekbredline\.ru/g.test(url)) {
-    return 'http://www.ekbredline.ru/'+url;
+    return 'http://www.ekbredline.ru/' + url;
   }
   return url
 }
 
 window.parserRedLineSite = function (url) {
-  if(/<a/g.test(url)){
+  if (cash[url]) {
+    return cash[url]
+  }
+  throw new Error('Урл нету в кеше')
+}
+
+window.parserRedLineSiteAsync = function (url) {
+  if (/<a/g.test(url)) {
     var el = document.createElement('div');
     el.innerHTML = url;
     url = el.querySelector('a').getAttribute('href');
@@ -40,7 +49,7 @@ window.parserRedLineSite = function (url) {
       result.content = result.content.replace(/not-src=/gm, 'src=');
       result.content = result.content.replace(/------+/gm, '');
       result.content = result.content.replace(/(Следующий объект|Предыдущий объект)/gm, '<hr>');
-      result.content = '<div class="contetn-baloon">'+result.content+'</div>'
+      result.content = '<div class="contetn-baloon">' + result.content + '</div>'
       var elAudioEng = el.querySelector('[title="Audio in English"]');
       if (elAudioEng) {
         result.audioEng = resolveUrl(elAudioEng.getAttribute('href'));
@@ -68,5 +77,25 @@ window.parserRedLineSite = function (url) {
       done(result)
     });
   })
-
 }
+
+  window.parserRedLineAll = function () {
+    var i = 0;
+    var pars = function () {
+      var obj = Window.ContentPoint[i];
+      if (!obj) {
+        window.cashRedLineSite = cash;
+        console.log('Текст скопирован copy(JSON.stringify(window.cashRedLineSite))');
+        return
+      }
+
+      var url = obj.link;
+      parserRedLineSiteAsync(url).then(function (result) {
+        console.log('pars ' + url);
+        cash[url] = result;
+        i++;
+        pars()
+      })
+    };
+    pars()
+  }

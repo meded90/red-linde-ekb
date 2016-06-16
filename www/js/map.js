@@ -77,8 +77,17 @@ window.mapRedLine = function () {
      *  Logo
      */
     var LogoLayout = ymaps.templateLayoutFactory.createClass(
-      '<div class="header">\n    <div class="header-wrap">\n        <div class="logo">\n            <img src="./img/logo-big.png" alt="">\n        </div><div id="plaer"></div>\n    </div>\n</div>'
-    );
+      '<div class="header">\n        \n    <div class="header-wrap1">\n    <div class="header-wrap">\n        <div class="logo">\n            <img src="./img/logo-big.png" alt="">\n        </div><!--\n        --><div id="plaer"></div>\n    </div>\n    </div>\n</div>'
+      , {
+        build: function () {
+          LogoLayout.superclass.build.call(this);
+          var el = $(this.getElement());
+          el.find(".logo").on('click', this.open.bind(this));
+        },
+        open: function (e) {
+          $('.modal').show();
+        }
+      });
     var logo = new ymaps.control.Button({
       options: {
         layout: LogoLayout
@@ -90,7 +99,7 @@ window.mapRedLine = function () {
     /**
      * Plaer
      */
-    new RedLinePlaer()
+    new RedLinePlaer();
 
     /**
      *  Linde
@@ -136,10 +145,10 @@ window.mapRedLine = function () {
 
 
     var geoObjects = [];
-    for (var i = 0; i < Window.ContentPoint.length; i++) {
+    for (var i = 0; i < window.ContentPoint.length; i++) {
       (function () {
 
-        var obj = Window.ContentPoint[i];
+        var obj = window.ContentPoint[i];
         obj.balloonContentBody = "<div style=\'text-align: center;height: 350px;  font-size: 50px;  \'>\n    <br>\n    <br>\n    <br>\n    <br>\n    <br>\n    <i class=\'icon-spinner2 spin\'> </i>\n</div>";
 
         var placemark = new ymaps.Placemark([obj.point[0], obj.point[1]],
@@ -155,12 +164,11 @@ window.mapRedLine = function () {
         // load content
         placemark.events.add('balloonopen', function (e) {
           var link = placemark.properties.get('link');
-          parserRedLineSite(link).then(function (obj) {
-            obj.GLOBAL = window.GLOBAL;  //TODO: добавить прокладыване маршрута
-            var data = new ymaps.data.Manager(obj);
-            var text = bodyLayout.build(data).text;
-            placemark.properties.set('balloonContentBody', text);
-          })
+          var obj = parserRedLineSite(link);
+          obj.GLOBAL = window.GLOBAL;  //TODO: добавить прокладыване маршрута
+          var data = new ymaps.data.Manager(obj);
+          var text = bodyLayout.build(data).text;
+          placemark.properties.set('balloonContentBody', text);
         });
 
         geoObjects[i] = placemark;
@@ -207,8 +215,6 @@ window.mapRedLine = function () {
       });
     }
   }, 300)
-
-
 
 
 }

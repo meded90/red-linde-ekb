@@ -1,4 +1,4 @@
-Window.ContentPoint = [
+window.ContentPoint = [
   {
     point: [56.838642, 60.597978],
 
