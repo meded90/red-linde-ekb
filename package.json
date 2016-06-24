@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/phonegap/phonegap-app-hello-world/issues"
   },
-  "homepage": "https://github.com/phonegap/phonegap-app-hello-world"
+  "homepage": "https://github.com/phonegap/phonegap-app-hello-world",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inline-source": "^2.1.0"
+  }
 }
