@@ -12,12 +12,38 @@
         width: 100%;
         height: 100%;
       }
-
+      .code{
+        position: fixed;
+        max-width:50%;
+        max-height:50%;
+        bottom: 20px;
+        right: 20px;
+        width: 150px;
+        height: 150px;
+        -webkit-transition: all 100ms;
+        -moz-transition: all 100ms;
+        -ms-transition: all 100ms;
+        -o-transition: all 100ms;
+        transition: all 100ms;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .code:hover{
+        background-color: #fff;
+        width: 350px;
+        height:350px;
+      }
+      .code img{
+        max-height: 100%;
+        min-width: 100%;
+      }
     </style>
   </head>
   <body>
 
   <iframe src="www/index.html" frameborder="0" width="100%" height="100%"></iframe>
 
+  <a href="http://meded90.github.io/red-linde-ekb/" class="code">
+    <img src="sourse/_.png" alt="">
+  </a>
   </body>
 </html>
