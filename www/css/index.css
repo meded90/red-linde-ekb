@@ -1,45 +1,292 @@
-/*
-Error: Invalid US-ASCII character "\xC2"
-        on line 126 of index.sass
+/* Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License. */
+@import url(http://db.onlinewebfonts.com/c/906bfc499768ba1fdbead60e4d1d7e41?family=HelveticaMonospacedW01);
+* {
+  -webkit-tap-highlight-color: transparent; }
 
-121:     +media-max(471px)
-122:       text-align: center
-123:   .logo
-124:     display: inline-block
-125:     vertical-align: bottom
-126:     background-image: url(../img/logo-big§§.png)
-127:     padding-top: 109px / 399
-128:     max-width: 399px
-129:     img
-130:       max-height: 100%
-131: .modal
+/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+body {
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
+  background-color: #E4E4E4;
+  background-image: linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+  background-image: -webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+  background-image: -ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #A7A7A7), color-stop(0.51, #E4E4E4));
+  background-attachment: fixed;
+  font-family: "HelveticaNeue-Light", "HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  width: 100%; }
 
-Backtrace:
-index.sass:126
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:1300:in `rescue in block in find_encoding_error'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:1297:in `block in find_encoding_error'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:1296:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:1296:in `each_with_index'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:1296:in `find_encoding_error'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/util.rb:905:in `check_sass_encoding'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:436:in `check_encoding!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:392:in `_to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin.rb:82:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid US-ASCII character \"\xC2\"\A         on line 126 of index.sass\A \A 121:     +media-max(471px)\A 122:       text-align: center\A 123:   .logo\A 124:     display: inline-block\A 125:     vertical-align: bottom\A 126:     background-image: url(../img/logo-big§§.png)\A 127:     padding-top: 109px / 399\A 128:     max-width: 399px\A 129:     img\A 130:       max-height: 100%\A 131: .modal"; }
+img {
+  max-width: 100%; }
+
+/* Portrait layout (default) */
+h1 {
+  margin-top: 30px;
+  text-transform: none;
+  color: #de352c;
+  font-size: 30px; }
+
+a {
+  color: #007edf;
+  text-decoration: none; }
+  a.red {
+    color: #de352c; }
+
+.appLoad {
+  background: url(../img/logo.png) no-repeat center top;
+  /* 170px x 200px */
+  position: absolute;
+  /* position in the center of the screen */
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  /* text area height */
+  width: 225px;
+  /* text area width */
+  text-align: center;
+  padding: 180px 0px 0px 0px;
+  /* image height is 200px (bottom 20px are overlapped with text) */
+  margin: -115px 0px 0px -112px; }
+
+/* offset vertical: half of image height and text area height */
+/* offset horizontal: half of text area width */
+#mapyandex,
+.app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden; }
+
+[class*=-copyright],
+[class*=map-copyrights-promo] {
+  display: none; }
+
+.header {
+  position: absolute;
+  z-index: 3999;
+  top: 15px;
+  left: 15px;
+  margin-left: -12px;
+  margin-top: -12px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px; }
+  @media screen and (max-width: 471px) {
+    .header {
+      right: 15px;
+      text-align: center; } }
+  .header .header-wrap1 {
+    height: 70px; }
+  .header .header-wrap {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-height: 70px; }
+    @media screen and (max-width: 471px) {
+      .header .header-wrap {
+        text-align: center; } }
+  .header .logo {
+    display: inline-block;
+    vertical-align: bottom; }
+    .header .logo img {
+      max-height: 100%; }
+
+.modal {
+  background-color: #fff;
+  position: fixed;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15), 0 5px 15px -7px rgba(0, 0, 0, 0.5);
+  padding: 10px; }
+  .modal .content_container {
+    height: 100%;
+    overflow: auto; }
+  .modal .grey {
+    color: #828282;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.17); }
+  .modal .clous {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+PHBvbHlnb24gZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMTQsMC43IDEzLjMsMCA3LDYuMjk5IDAuNywwIDAsMC43IDYuMyw3IDAsMTMuMjk5IDAuNywxNCA3LDcuNyAxMy4zLDE0IDE0LDEzLjI5OSA3LjcsNyIvPjwvc3ZnPg==);
+    display: block;
+    width: 30px;
+    height: 40px;
+    margin-right: 4px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    top: 0;
+    right: 0; }
+
+.contetn-baloon .ob-fotos,
+.contetn-baloon [title="Audio in English"],
+.contetn-baloon hr {
+  display: none; }
+
+#plaer {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: bottom; }
+  @media screen and (max-width: 335px) {
+    #plaer {
+      position: absolute;
+      right: 20px;
+      top: 88px; } }
+
+.audiojs {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 4px;
+  font-size: 15px;
+  color: #de352c; }
+  .audiojs audio {
+    position: absolute;
+    left: -1px; }
+  .audiojs .play-pause {
+    padding: 9px 0;
+    margin: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: center;
+    font-size: 40px; }
+  .audiojs p {
+    display: none;
+    margin: 0px;
+    cursor: pointer; }
+  .audiojs .play {
+    display: block; }
+  .audiojs .scrubber {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3px;
+    background-color: #dcdcdc;
+    left: -10px; }
+    @media screen and (max-width: 335px) {
+      .audiojs .scrubber {
+        left: 0px; } }
+  .audiojs .progressAudeo {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background-color: #de352c; }
+  .audiojs .loaded {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background-color: #b4b4b4; }
+  .audiojs .time {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "HelveticaMonospacedW01", monospace;
+    line-height: 14px;
+    margin-left: 10px;
+    padding: 4px 0 4px; }
+    .audiojs .time em {
+      padding: 0px 2px 0px 0px;
+      color: rgba(222, 53, 44, 0.6);
+      font-style: normal; }
+    .audiojs .time strong {
+      padding: 0px 0px 0px 2px;
+      font-weight: normal; }
+    @media screen and (max-width: 471px) {
+      .audiojs .time {
+        display: none; } }
+  .audiojs .error-message {
+    float: left;
+    display: none;
+    margin: 0px 10px;
+    height: 36px;
+    width: 400px;
+    overflow: hidden;
+    line-height: 36px;
+    white-space: nowrap;
+    color: #fff;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -icab-text-overflow: ellipsis;
+    -khtml-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis; }
+    .audiojs .error-message a {
+      color: #eee;
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 1px solid #999;
+      white-space: wrap; }
+
+.playing .play, .playing .loading, .playing .error {
+  display: none; }
+.playing .pause {
+  display: block; }
+
+.loading .play, .loading .pause, .loading .error {
+  display: none; }
+.loading .loading {
+  display: block; }
+
+.error .time, .error .play, .error .pause, .error .scrubber, .error .loading {
+  display: none; }
+.error .error {
+  display: block; }
+.error .play-pause p {
+  cursor: auto; }
+.error .error-message {
+  display: block; }
+
+.balloon-audeo {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+  border: 2px solid #de352c;
+  color: #de352c;
+  font-weight: bold;
+  cursor: pointer; }
+  .balloon-audeo:hover {
+    background-color: rgba(222, 53, 44, 0.1); }
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+.spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block; }
+
+/*# sourceMappingURL=index.css.map */
