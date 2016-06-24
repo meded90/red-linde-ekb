@@ -77,7 +77,7 @@ window.mapRedLine = function () {
      *  Logo
      */
     var LogoLayout = ymaps.templateLayoutFactory.createClass(
-      '<div class="header">\n        \n    <div class="header-wrap1">\n    <div class="header-wrap">\n        <div class="logo">\n            <img src="./img/logo-big.png" alt="">\n        </div><!--\n        --><div id="plaer"></div>\n    </div>\n    </div>\n</div>'
+      '<div class="header">\n        \n    <div class="header-wrap1">\n    <div class="header-wrap">\n        <div class="logo">\n            <!--<img src="./img/logo-big.png" alt="">-->\n        </div><!--\n        --><div id="plaer"></div>\n    </div>\n    </div>\n</div>'
       , {
         build: function () {
           LogoLayout.superclass.build.call(this);
